@@ -3,12 +3,10 @@
 #include <iostream>
 
 bool getNePar(int num) {
-  bool res = false;
+  bool res = 0;
   num >>= 1;
   for (int i = 0; i < 15; i += 2) {
-    if ((num >> i) & 1) {
-      res = !res;
-    }
+    res ^= (num >> i);
   }
   return res;
 }
@@ -16,9 +14,7 @@ bool getNePar(int num) {
 bool getPar(int num) {
   bool res = false;
   for (int i = 0; i < 15; i += 2) {
-    if ((num >> i) & 1) {
-      res = !res;
-    }
+    res ^= (num >> i);
   }
   return res;
 }
@@ -36,7 +32,7 @@ int main() {
     words[N - 1][2] = '\0';
     std::cout << "You entered: " << words[N - 1] << std::endl;
     encrypted[N - 1] = 0;
-   // std::cout << inputWord[0] << std::endl;
+    std::cout << inputWord[0] << std::endl;
     std::cout << std::bitset<32>(inputWord[0]) << std::endl;
     encrypted[N - 1] |= inputWord[0];
     std::cout << std::bitset<32>(encrypted[N - 1]) << std::endl;
